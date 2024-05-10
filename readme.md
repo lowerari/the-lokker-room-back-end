@@ -4,6 +4,33 @@ Welcome to the lokker room api, a basic back end for a practice messaging app fo
 
 ## Utilization
 
+In order to make use of this back end, a SQL database must first be set up. The original database uses the following tables (with their respective columns):
+
+Users
+-id (primary key, auto increment)
+-email (text)
+-password (text)
+-nickname (text)
+-team (text)
+
+Lobbies
+-id (primary key, auto increment)
+-user_id (foreign key referencing "id" of "users" table)
+-name (text)
+-team (text)
+
+Messages
+-id (primary key, auto increment)
+-lobby_id (foreign key, references "id" of "lobbies" table)
+-sender_id (foreign key, references "id" of "users" table)
+-created_at (timestamp)
+
+DM
+-id (you guessed it: primary key, auto increment)
+-recipient_id (foreign key, references "id" of "users" table)
+-sender_id (another foreign key referencing "id" of "users" table)
+-created_at (timestamp)
+
 The following endpoints can be utilized:
 
 - /api/test (GET request to test connection to the API)
